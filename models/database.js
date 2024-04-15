@@ -37,5 +37,24 @@ const checkuser = async(email)=> {
     console.log(password);
         return password
     }
+    //end of user table
+
+    //start of message table
+    const getmessages = async() => {
+        const [messages] = await pool.query("SELECT * FROM messages");
+        return messages  
+    }
+
+    const addmessage = async(sender,receiver,message) => {
+        const [result] = await pool.query(`
+        INSERT INTO messages (sender_id, receiver_id, message_text) 
+        VALUES (?, ?, ?);
+        `,[sender,receiver,message] 
+        ) 
+        return result
+    }
+
+
+
 
     export{addusers,getuser,updateuser,deleteuser,checkuser,getusers}
