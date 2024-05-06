@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import userRoute from './routes/user.js'
 import loginRoute from './routes/login.js'
+import messageRoute from './routes/messages.js'
 import {auth} from './middleware/authentication.js'
 // import cookieParser from 'cookie-parser'
 
@@ -19,6 +20,7 @@ app.use(cookieParser());
 
 // app.use('/products', productRoute); 
 app.use('/users', userRoute);
+app.use('/messages', messageRoute);
 // app.use('/cart',authenticate, cartRoute);
 // app.use('/signup', signupRoute);
 app.use('/login',auth, loginRoute);

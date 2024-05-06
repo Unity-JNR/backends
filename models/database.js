@@ -54,7 +54,14 @@ const checkuser = async(email)=> {
         return result
     }
 
+    const getmessage = async(id) => {
+        const [message] = await pool.query("SELECT * FROM messages WHERE message_id = ?", [id]);
+        return message
+    }
 
 
 
-    export{addusers,getuser,updateuser,deleteuser,checkuser,getusers}
+
+
+
+    export{addusers,getuser,updateuser,deleteuser,checkuser,getusers, getmessages,addmessage,getmessage}
